@@ -1,22 +1,37 @@
 import {
-  Banner,
-  useApi,
-  useTranslate,
   reactExtension,
+  Checkbox,
+  useApplyAttributeChange,
 } from '@shopify/ui-extensions-react/checkout';
 
+// 1. Choose an extension target
 export default reactExtension(
-  'purchase.checkout.block.render',
+  'purchase.checkout.shipping-option-item.details.render',
   () => <Extension />,
 );
 
 function Extension() {
-  const translate = useTranslate();
-  const { extension } = useApi();
+  const applyAttributeChange =
+    useApplyAttributeChange();
 
+  // 2. Render a UI
   return (
-    <Banner title="city-ddl">
-      {translate('welcome', {target: extension.target})}
-    </Banner>
+    <Checkbox onChange={onCheckboxChange}>
+      I would like to receive a free gift with my
+      order
+    </Checkbox>
   );
+
+  // 3. Call API methods to modify the checkout
+  async function onCheckboxChange(isChecked) {
+    const result = await applyAttributeChange({
+      key: 'requestedFreeGift',
+      type: 'updateAttribute',
+      value: isChecked ? 'yes' : 'no',
+    });
+    console.log(
+      'applyAttributeChange result',
+      result,
+    );
+  }
 }
