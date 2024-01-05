@@ -1,0 +1,7 @@
+query RunInput {
+  paymentCustomization {
+    metafield(namespace: "$app:hide-cod-amount", key: "function-configuration") {
+      value
+    }
+  }
+}
