@@ -10,9 +10,7 @@ query RunInput {
         ... on ProductVariant {
           product {
             hasTags {
-              ... on HasTagResponse {
-                tag
-              }
+              tag
             }
           }
         }
