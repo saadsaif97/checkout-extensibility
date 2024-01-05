@@ -1,7 +1,26 @@
 query RunInput {
   paymentCustomization {
-    metafield(namespace: "$app:hide-cod-with-product-tags", key: "function-configuration") {
+    metafield(namespace: "hideCOD", key: "productTags") {
       value
     }
+  }
+  cart {
+    lines {
+      merchandise {
+        ... on ProductVariant {
+          product {
+            hasTags {
+              ... on HasTagResponse {
+                tag
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  paymentMethods {
+    id
+    name
   }
 }

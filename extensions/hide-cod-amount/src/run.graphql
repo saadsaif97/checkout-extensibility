@@ -1,6 +1,6 @@
 query RunInput {
   paymentCustomization {
-    metafield(namespace: "amount", key: "value") {
+    metafield(namespace: "hideCOD", key: "cartAmount") {
       value
     }
   }
