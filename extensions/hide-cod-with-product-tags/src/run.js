@@ -20,6 +20,8 @@ export function run(input) {
   const configuration = JSON.parse(
     input?.paymentCustomization?.metafield?.value ?? "{}"
   );
+  
+  console.log(JSON.stringify(input.cart.lines.map(line => line.merchandise)))
 
   return NO_CHANGES;
 };
