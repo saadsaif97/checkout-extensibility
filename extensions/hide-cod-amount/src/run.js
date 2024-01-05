@@ -17,13 +17,11 @@ const NO_CHANGES = {
  * @returns {FunctionRunResult}
  */
 export function run(input) {
-  const CONFIGURED_AMOUNT = JSON.parse(
-    input?.paymentCustomization?.metafield?.value ?? "{}"
-  );
+  const CONFIGURED_AMOUNT = input?.paymentCustomization?.metafield?.value
+    ? JSON.parse(input.paymentCustomization.metafield.value)
+    : {};
 
   const cartValue = input.cart.cost.totalAmount.amount;
-
-  console.log(JSON.stringify({ CONFIGURED_AMOUNT }));
 
   if (cartValue > CONFIGURED_AMOUNT) {
     // Find the payment method to hide
