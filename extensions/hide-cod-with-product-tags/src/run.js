@@ -24,6 +24,27 @@ export function run(input) {
   );
 
   console.log(JSON.stringify(NO_COD_PRODUCT_IS_AVAILABLE));
+  
+  if (NO_COD_PRODUCT_IS_AVAILABLE) {
+    // Find the payment method to hide
+    const hidePaymentMethod = input.paymentMethods.find((method) =>
+      method.name.includes("COD")
+    );
+
+    if (!hidePaymentMethod) {
+      return NO_CHANGES;
+    }
+
+    return {
+      operations: [
+        {
+          hide: {
+            paymentMethodId: hidePaymentMethod.id,
+          },
+        },
+      ],
+    };
+  }
 
   return NO_CHANGES;
 }
