@@ -14,7 +14,7 @@ export default reactExtension(
 function Extension() {
   const {starting_digits, max_length, country_code } = useSettings();
   const address = useShippingAddress();
-  const phone = usePhone();
+  const phone = address?.phone
   
   console.log({phone})
   
