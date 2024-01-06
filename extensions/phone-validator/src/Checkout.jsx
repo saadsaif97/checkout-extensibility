@@ -35,7 +35,7 @@ function Extension() {
     errors: [
       {
         message: `Phone number must start with ${startingDigits}`,
-        target,
+        target: "$.cart.deliveryGroups[0].deliveryAddress.phone",
       },
       {
         message: `Phone number must start with ${startingDigits}`,
@@ -49,7 +49,7 @@ function Extension() {
     errors: [
       {
         message: `Phone number must be ${maxLength} long`,
-        target,
+        target: "$.cart.deliveryGroups[0].deliveryAddress.phone",
       },
       {
         message: `Phone number must be ${maxLength} long`,
