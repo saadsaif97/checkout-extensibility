@@ -1,7 +1,4 @@
 import {
-  Banner,
-  useApi,
-  useTranslate,
   reactExtension,
   useSettings,
   useShippingAddress,
@@ -21,8 +18,8 @@ function Extension() {
   
   console.log({phone})
   
-  if (address.countryCode !== country_code?.toUpperCase()) {
-    return <></>
+  if (address.countryCode !== country_code?.toUpperCase() && !phone) {
+    return null
   }
   
   const startingDigits = starting_digits ?? "44";
@@ -59,16 +56,14 @@ function Extension() {
   const ALLOW = { behavior: "allow" };
   
   useBuyerJourneyIntercept(({ canBlockProgress }) => {
-    if (!phone.startsWith(startingDigits)) {
-      return SHOW_STARTING_ERROR_AND_BLOCK_PROGRESS
+    if (!phone?.startsWith(startingDigits)) {
+      return canBlockProgress && SHOW_STARTING_ERROR_AND_BLOCK_PROGRESS
     }
     
-    if (phone.length !== maxLength) {
-      return SHOW_LENGTH_ERROR_AND_BLOCK_PROGRESS
+    if (phone?.length !== maxLength) {
+      return canBlockProgress && SHOW_LENGTH_ERROR_AND_BLOCK_PROGRESS
     }
     
     return ALLOW
   });
-  
-  return null
 }
