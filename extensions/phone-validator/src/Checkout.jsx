@@ -3,6 +3,7 @@ import {
   useApi,
   useTranslate,
   reactExtension,
+  useSettings,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -11,12 +12,17 @@ export default reactExtension(
 );
 
 function Extension() {
-  const translate = useTranslate();
-  const { extension } = useApi();
+  const {starting_digits, max_length, country } = useSettings();
+  
+  const startingDigits = starting_digits ?? "44";
+  const maxLength = max_length ?? 11;
+  const countryCode = country ?? "PK";
 
+  console.log({startingDigits, maxLength, countryCode})
+  
   return (
-    <Banner title="phone-validator">
-      {translate('welcome', {target: extension.target})}
+    <Banner>
+      Test
     </Banner>
   );
 }
