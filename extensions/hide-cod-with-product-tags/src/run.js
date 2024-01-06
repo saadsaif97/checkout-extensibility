@@ -17,11 +17,13 @@ const NO_CHANGES = {
  * @returns {FunctionRunResult}
  */
 export function run(input) {
-  const configuration = JSON.parse(
-    input?.paymentCustomization?.metafield?.value ?? "{}"
+  const NO_COD_PRODUCT_IS_AVAILABLE = input.cart.lines.some(
+    (item) =>
+      item.merchandise.__typename == "ProductVariant" &&
+      item.merchandise.product.hasAnyTag
   );
-  
-  console.log(JSON.stringify(input.cart.lines.map(line => line.merchandise)))
+
+  console.log(JSON.stringify(NO_COD_PRODUCT_IS_AVAILABLE));
 
   return NO_CHANGES;
-};
+}

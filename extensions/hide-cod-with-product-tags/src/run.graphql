@@ -1,17 +1,11 @@
 query RunInput {
-  paymentCustomization {
-    metafield(namespace: "hideCOD", key: "productTags") {
-      value
-    }
-  }
   cart {
     lines {
       merchandise {
+        __typename
         ... on ProductVariant {
           product {
-            hasTags {
-              tag
-            }
+            hasAnyTag(tags: ["noCOD"])
           }
         }
       }
