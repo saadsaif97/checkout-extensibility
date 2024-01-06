@@ -6,7 +6,7 @@ import {
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
-  'purchase.checkout.block.render',
+  'purchase.checkout.delivery-address.render-before',
   () => <Extension />,
 );
 

@@ -16,12 +16,13 @@ handle = "phone-validator"
 
 [[extensions.targeting]]
 module = "./src/Checkout.jsx"
-target = "purchase.checkout.block.render"
+target = "purchase.checkout.delivery-address.render-before"
 
 [extensions.capabilities]
 # Gives your extension access to directly query Shopify’s storefront API.
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#api-access
 api_access = true
+block_progress = true
 
 # Gives your extension access to make external network calls, using the
 # JavaScript `fetch()` API. Learn more:
@@ -43,9 +44,22 @@ api_access = true
 # your extension. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
 
-# [extensions.settings]
-# [[extensions.settings.fields]]
-# key = "banner_title"
-# type = "single_line_text_field"
-# name = "Banner title"
-# description = "Enter a title for the banner"
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "starting_digits"
+type = "single_line_text_field"
+name = "Starting digits"
+description = "Enter two starting digits of phone number like 44,03, 01"
+  [[extensions.settings.fields.validations]]
+  name = "max"
+  value = "2"
+[[extensions.settings.fields]]
+key = "max_length"
+type = "number_integer"
+name = "Max length"
+description = "Max length of phone number"
+[[extensions.settings.fields]]
+key = "country"
+type = "single_line_text_field"
+name = "Contry to validate"
+description = "Enter the country to validate (it should be 2 digit country code like CA for Canada)"
