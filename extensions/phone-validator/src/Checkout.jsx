@@ -56,11 +56,11 @@ function Extension() {
   const ALLOW = { behavior: "allow" };
   
   useBuyerJourneyIntercept(({ canBlockProgress }) => {
-    if (!phone?.startsWith(startingDigits)) {
+    if (phone && !phone?.startsWith(startingDigits)) {
       return canBlockProgress && SHOW_STARTING_ERROR_AND_BLOCK_PROGRESS
     }
     
-    if (phone?.length !== maxLength) {
+    if (phone && phone?.length !== maxLength) {
       return canBlockProgress && SHOW_LENGTH_ERROR_AND_BLOCK_PROGRESS
     }
     
