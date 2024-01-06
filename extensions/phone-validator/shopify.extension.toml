@@ -59,7 +59,7 @@ type = "number_integer"
 name = "Max length"
 description = "Max length of phone number"
 [[extensions.settings.fields]]
-key = "country"
+key = "country_code"
 type = "single_line_text_field"
 name = "Contry to validate"
 description = "Enter the country to validate (it should be 2 digit country code like CA for Canada)"

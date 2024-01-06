@@ -4,6 +4,7 @@ import {
   useTranslate,
   reactExtension,
   useSettings,
+  useShippingAddress,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -12,13 +13,16 @@ export default reactExtension(
 );
 
 function Extension() {
-  const {starting_digits, max_length, country } = useSettings();
+  const {starting_digits, max_length, country_code } = useSettings();
+  const address = useShippingAddress();
+  
+  if (address.countryCode !== country_code?.toUpperCase()) {
+    return <></>
+  }
   
   const startingDigits = starting_digits ?? "44";
   const maxLength = max_length ?? 11;
-  const countryCode = country ?? "PK";
-
-  console.log({startingDigits, maxLength, countryCode})
+  console.log({startingDigits, maxLength, country_code, code: address.countryCode})
   
   return (
     <Banner>
