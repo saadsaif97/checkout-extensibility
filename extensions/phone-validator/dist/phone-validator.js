@@ -1,9 +1,7 @@
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
-  var __defProps = Object.defineProperties;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getOwnPropSymbols = Object.getOwnPropertySymbols;
   var __getProtoOf = Object.getPrototypeOf;
@@ -21,18 +19,17 @@
       }
     return a;
   };
-  var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
   var __objRest = (source, exclude) => {
-    var target = {};
+    var target2 = {};
     for (var prop in source)
       if (__hasOwnProp.call(source, prop) && exclude.indexOf(prop) < 0)
-        target[prop] = source[prop];
+        target2[prop] = source[prop];
     if (source != null && __getOwnPropSymbols)
       for (var prop of __getOwnPropSymbols(source)) {
         if (exclude.indexOf(prop) < 0 && __propIsEnum.call(source, prop))
-          target[prop] = source[prop];
+          target2[prop] = source[prop];
       }
-    return target;
+    return target2;
   };
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -45,12 +42,12 @@
     }
     return to;
   };
-  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  var __toESM = (mod, isNodeMode, target2) => (target2 = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
     // If the importer is in node compatibility mode or this is not an ESM
     // file that has been converted to a CommonJS file using a Babel-
     // compatible transform (i.e. "__esModule" has not been set), then set
     // "default" to the CommonJS "module.exports" for node compatibility.
-    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target2, "default", { value: mod, enumerable: true }) : target2,
     mod
   ));
   var __async = (__this, __arguments, generator) => {
@@ -675,7 +672,7 @@
             }
             return ReactElement(element.type, key, ref, self, source, owner, props);
           }
-          function isValidElement2(object) {
+          function isValidElement(object) {
             return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
           }
           var SEPARATOR = ".";
@@ -740,7 +737,7 @@
                   return c;
                 });
               } else if (mappedChild != null) {
-                if (isValidElement2(mappedChild)) {
+                if (isValidElement(mappedChild)) {
                   {
                     if (mappedChild.key && (!_child || _child.key !== mappedChild.key)) {
                       checkKeyStringCoercion(mappedChild.key);
@@ -828,7 +825,7 @@
             }) || [];
           }
           function onlyChild(children) {
-            if (!isValidElement2(children)) {
+            if (!isValidElement(children)) {
               throw new Error("React.Children.only expected to receive a single React element child.");
             }
             return children;
@@ -1081,7 +1078,7 @@
             }
             return false;
           }
-          function memo2(type, compare) {
+          function memo(type, compare) {
             {
               if (!isValidElementType(type)) {
                 error("memo: The first argument must be a component. Instead received: %s", type === null ? "null" : typeof type);
@@ -1119,7 +1116,7 @@
             }
             return dispatcher;
           }
-          function useContext3(Context) {
+          function useContext2(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1145,7 +1142,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useRef(initialValue);
           }
-          function useEffect2(create, deps) {
+          function useEffect3(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useEffect(create, deps);
           }
@@ -1161,7 +1158,7 @@
             var dispatcher = resolveDispatcher();
             return dispatcher.useCallback(callback, deps);
           }
-          function useMemo2(create, deps) {
+          function useMemo(create, deps) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useMemo(create, deps);
           }
@@ -1559,11 +1556,11 @@
             if (isArray(node)) {
               for (var i = 0; i < node.length; i++) {
                 var child = node[i];
-                if (isValidElement2(child)) {
+                if (isValidElement(child)) {
                   validateExplicitKey(child, parentType);
                 }
               }
-            } else if (isValidElement2(node)) {
+            } else if (isValidElement(node)) {
               if (node._store) {
                 node._store.validated = true;
               }
@@ -1574,7 +1571,7 @@
                   var iterator = iteratorFn.call(node);
                   var step;
                   while (!(step = iterator.next()).done) {
-                    if (isValidElement2(step.value)) {
+                    if (isValidElement(step.value)) {
                       validateExplicitKey(step.value, parentType);
                     }
                   }
@@ -1897,14 +1894,14 @@
           var createElement$1 = createElementWithValidation;
           var cloneElement$1 = cloneElementWithValidation;
           var createFactory = createFactoryWithValidation;
-          var Children2 = {
+          var Children = {
             map: mapChildren,
             forEach: forEachChildren,
             count: countChildren,
             toArray,
             only: onlyChild
           };
-          exports.Children = Children2;
+          exports.Children = Children;
           exports.Component = Component2;
           exports.Fragment = REACT_FRAGMENT_TYPE;
           exports.Profiler = REACT_PROFILER_TYPE;
@@ -1918,21 +1915,21 @@
           exports.createFactory = createFactory;
           exports.createRef = createRef;
           exports.forwardRef = forwardRef;
-          exports.isValidElement = isValidElement2;
+          exports.isValidElement = isValidElement;
           exports.lazy = lazy;
-          exports.memo = memo2;
+          exports.memo = memo;
           exports.startTransition = startTransition;
           exports.unstable_act = act;
           exports.useCallback = useCallback;
-          exports.useContext = useContext3;
+          exports.useContext = useContext2;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
-          exports.useEffect = useEffect2;
+          exports.useEffect = useEffect3;
           exports.useId = useId;
           exports.useImperativeHandle = useImperativeHandle;
           exports.useInsertionEffect = useInsertionEffect;
           exports.useLayoutEffect = useLayoutEffect;
-          exports.useMemo = useMemo2;
+          exports.useMemo = useMemo;
           exports.useReducer = useReducer;
           exports.useRef = useRef2;
           exports.useState = useState2;
@@ -14705,14 +14702,14 @@
             var _setupIntersectionObs = setupIntersectionObserver(instanceRoots, callback, options), disconnect = _setupIntersectionObs.disconnect, observe = _setupIntersectionObs.observe, unobserve = _setupIntersectionObs.unobserve;
             var commitHook = function() {
               var nextInstanceRoots = findAllNodes(hostRoot, selectors);
-              instanceRoots.forEach(function(target) {
-                if (nextInstanceRoots.indexOf(target) < 0) {
-                  unobserve(target);
+              instanceRoots.forEach(function(target2) {
+                if (nextInstanceRoots.indexOf(target2) < 0) {
+                  unobserve(target2);
                 }
               });
-              nextInstanceRoots.forEach(function(target) {
-                if (instanceRoots.indexOf(target) < 0) {
-                  observe(target);
+              nextInstanceRoots.forEach(function(target2) {
+                if (instanceRoots.indexOf(target2) < 0) {
+                  observe(target2);
                 }
               });
             };
@@ -16910,43 +16907,43 @@
             };
             return fiber;
           }
-          function assignFiberPropertiesInDEV(target, source) {
-            if (target === null) {
-              target = createFiber(IndeterminateComponent, null, null, NoMode);
+          function assignFiberPropertiesInDEV(target2, source) {
+            if (target2 === null) {
+              target2 = createFiber(IndeterminateComponent, null, null, NoMode);
             }
-            target.tag = source.tag;
-            target.key = source.key;
-            target.elementType = source.elementType;
-            target.type = source.type;
-            target.stateNode = source.stateNode;
-            target.return = source.return;
-            target.child = source.child;
-            target.sibling = source.sibling;
-            target.index = source.index;
-            target.ref = source.ref;
-            target.pendingProps = source.pendingProps;
-            target.memoizedProps = source.memoizedProps;
-            target.updateQueue = source.updateQueue;
-            target.memoizedState = source.memoizedState;
-            target.dependencies = source.dependencies;
-            target.mode = source.mode;
-            target.flags = source.flags;
-            target.subtreeFlags = source.subtreeFlags;
-            target.deletions = source.deletions;
-            target.lanes = source.lanes;
-            target.childLanes = source.childLanes;
-            target.alternate = source.alternate;
+            target2.tag = source.tag;
+            target2.key = source.key;
+            target2.elementType = source.elementType;
+            target2.type = source.type;
+            target2.stateNode = source.stateNode;
+            target2.return = source.return;
+            target2.child = source.child;
+            target2.sibling = source.sibling;
+            target2.index = source.index;
+            target2.ref = source.ref;
+            target2.pendingProps = source.pendingProps;
+            target2.memoizedProps = source.memoizedProps;
+            target2.updateQueue = source.updateQueue;
+            target2.memoizedState = source.memoizedState;
+            target2.dependencies = source.dependencies;
+            target2.mode = source.mode;
+            target2.flags = source.flags;
+            target2.subtreeFlags = source.subtreeFlags;
+            target2.deletions = source.deletions;
+            target2.lanes = source.lanes;
+            target2.childLanes = source.childLanes;
+            target2.alternate = source.alternate;
             {
-              target.actualDuration = source.actualDuration;
-              target.actualStartTime = source.actualStartTime;
-              target.selfBaseDuration = source.selfBaseDuration;
-              target.treeBaseDuration = source.treeBaseDuration;
+              target2.actualDuration = source.actualDuration;
+              target2.actualStartTime = source.actualStartTime;
+              target2.selfBaseDuration = source.selfBaseDuration;
+              target2.treeBaseDuration = source.treeBaseDuration;
             }
-            target._debugSource = source._debugSource;
-            target._debugOwner = source._debugOwner;
-            target._debugNeedsRemount = source._debugNeedsRemount;
-            target._debugHookTypes = source._debugHookTypes;
-            return target;
+            target2._debugSource = source._debugSource;
+            target2._debugOwner = source._debugOwner;
+            target2._debugNeedsRemount = source._debugNeedsRemount;
+            target2._debugHookTypes = source._debugHookTypes;
+            return target2;
           }
           function FiberRootNode(containerInfo, tag, hydrate, identifierPrefix, onRecoverableError) {
             this.tag = tag;
@@ -18194,7 +18191,7 @@
           {
             propTypesMisspellWarningShown = false;
           }
-          function isValidElement2(object) {
+          function isValidElement(object) {
             {
               return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
             }
@@ -18261,11 +18258,11 @@
               if (isArray(node)) {
                 for (var i = 0; i < node.length; i++) {
                   var child = node[i];
-                  if (isValidElement2(child)) {
+                  if (isValidElement(child)) {
                     validateExplicitKey(child, parentType);
                   }
                 }
-              } else if (isValidElement2(node)) {
+              } else if (isValidElement(node)) {
                 if (node._store) {
                   node._store.validated = true;
                 }
@@ -18276,7 +18273,7 @@
                     var iterator = iteratorFn.call(node);
                     var step;
                     while (!(step = iterator.next()).done) {
-                      if (isValidElement2(step.value)) {
+                      if (isValidElement(step.value)) {
                         validateExplicitKey(step.value, parentType);
                       }
                     }
@@ -18401,10 +18398,10 @@
               return jsxWithValidation(type, props, key, false);
             }
           }
-          var jsx5 = jsxWithValidationDynamic;
+          var jsx4 = jsxWithValidationDynamic;
           var jsxs = jsxWithValidationStatic;
           exports.Fragment = REACT_FRAGMENT_TYPE;
-          exports.jsx = jsx5;
+          exports.jsx = jsx4;
           exports.jsxs = jsxs;
         })();
       }
@@ -18429,11 +18426,6 @@
       return false;
     const prototype = Object.getPrototypeOf(value);
     return prototype == null || prototype === Object.prototype;
-  }
-
-  // node_modules/.pnpm/@remote-ui+core@2.2.3/node_modules/@remote-ui/core/build/esm/component.mjs
-  function createRemoteComponent(componentType) {
-    return componentType;
   }
 
   // node_modules/.pnpm/@remote-ui+core@2.2.3/node_modules/@remote-ui/core/build/esm/types.mjs
@@ -19089,7 +19081,7 @@
 
   // node_modules/.pnpm/@shopify+ui-extensions@2023.10.0/node_modules/@shopify/ui-extensions/build/esm/utilities/registration.mjs
   function createExtensionRegistrationFunction() {
-    const extensionWrapper = (target, implementation) => {
+    const extensionWrapper = (target2, implementation) => {
       var _shopify;
       function extension2(...args) {
         return __async(this, null, function* () {
@@ -19112,7 +19104,7 @@
           return renderResult;
         });
       }
-      (_shopify = globalThis.shopify) === null || _shopify === void 0 ? void 0 : _shopify.extend(target, extension2);
+      (_shopify = globalThis.shopify) === null || _shopify === void 0 ? void 0 : _shopify.extend(target2, extension2);
       return extension2;
     };
     return extensionWrapper;
@@ -19121,11 +19113,8 @@
   // node_modules/.pnpm/@shopify+ui-extensions@2023.10.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/extension.mjs
   var extension = createExtensionRegistrationFunction();
 
-  // node_modules/.pnpm/@shopify+ui-extensions@2023.10.0/node_modules/@shopify/ui-extensions/build/esm/surfaces/checkout/components/Banner/Banner.mjs
-  var Banner = createRemoteComponent("Banner");
-
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
-  var import_react6 = __toESM(require_react(), 1);
+  var import_react4 = __toESM(require_react(), 1);
 
   // node_modules/.pnpm/@remote-ui+react@5.0.2_react-reconciler@0.29.0_react@18.2.0/node_modules/@remote-ui/react/build/esm/render.mjs
   var import_react2 = __toESM(require_react(), 1);
@@ -19322,97 +19311,20 @@
     }), container, null, callback);
   }
 
-  // node_modules/.pnpm/@remote-ui+react@5.0.2_react-reconciler@0.29.0_react@18.2.0/node_modules/@remote-ui/react/build/esm/components.mjs
-  var import_react4 = __toESM(require_react(), 1);
-  var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
-
-  // node_modules/.pnpm/@remote-ui+react@5.0.2_react-reconciler@0.29.0_react@18.2.0/node_modules/@remote-ui/react/build/esm/hooks/render.mjs
-  var import_react3 = __toESM(require_react(), 1);
-  function useRender() {
-    const render3 = (0, import_react3.useContext)(RenderContext);
-    if (render3 == null) {
-      throw new Error("No remote-ui Render instance found in context");
-    }
-    return render3;
-  }
-
-  // node_modules/.pnpm/@remote-ui+react@5.0.2_react-reconciler@0.29.0_react@18.2.0/node_modules/@remote-ui/react/build/esm/components.mjs
-  function createRemoteReactComponent(componentType, {
-    fragmentProps
-  } = {}) {
-    if (!fragmentProps || !fragmentProps.length) {
-      return componentType;
-    }
-    const wrapper = createComponentWrapper(componentType, fragmentProps);
-    wrapper.displayName = componentType;
-    return wrapper;
-  }
-  function createComponentWrapper(componentType, fragmentProps) {
-    const Component2 = componentType;
-    return /* @__PURE__ */ (0, import_react4.memo)(function ComponentWrapper(_a) {
-      var _b = _a, {
-        children: externalChildren = []
-      } = _b, externalProps = __objRest(_b, [
-        "children"
-      ]);
-      const fragments = (0, import_react4.useRef)({});
-      const {
-        root,
-        reconciler
-      } = useRender();
-      const {
-        props,
-        children
-      } = (0, import_react4.useMemo)(() => {
-        const portals = [];
-        const props2 = {};
-        for (const key of Object.keys(externalProps)) {
-          const element = externalProps[key];
-          if (fragmentProps.includes(key) && /* @__PURE__ */ (0, import_react4.isValidElement)(element)) {
-            const currentFragment = fragments.current[key];
-            const fragment = isRemoteFragment(currentFragment) ? currentFragment : root.createFragment();
-            fragments.current[key] = fragment;
-            Object.assign(fragment, {
-              createText(...args) {
-                return root.createText(...args);
-              },
-              createComponent(type, ...args) {
-                return root.createComponent(type, ...args);
-              }
-            });
-            const portal = reconciler.createPortal(element, fragment, null, null);
-            portals.push(portal);
-            props2[key] = fragment;
-          } else {
-            props2[key] = element;
-            delete fragments.current[key];
-          }
-        }
-        return {
-          props: props2,
-          children: [...import_react4.Children.toArray(externalChildren), ...portals]
-        };
-      }, [externalChildren, externalProps, root, reconciler, fragments]);
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(Component2, __spreadProps(__spreadValues({}, props), {
-        children
-      }));
-    });
-  }
-
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/context.mjs
-  var import_react5 = __toESM(require_react(), 1);
-  var ExtensionApiContext = /* @__PURE__ */ (0, import_react5.createContext)(null);
+  var import_react3 = __toESM(require_react(), 1);
+  var ExtensionApiContext = /* @__PURE__ */ (0, import_react3.createContext)(null);
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/render.mjs
-  var import_jsx_runtime3 = __toESM(require_jsx_runtime(), 1);
-  function reactExtension(target, render3) {
-    return extension(target, (root, api) => __async(this, null, function* () {
+  var import_jsx_runtime2 = __toESM(require_jsx_runtime(), 1);
+  function reactExtension(target2, render3) {
+    return extension(target2, (root, api) => __async(this, null, function* () {
       const element = yield render3(api);
       yield new Promise((resolve, reject) => {
         try {
-          render(/* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ExtensionApiContext.Provider, {
+          render(/* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ExtensionApiContext.Provider, {
             value: api,
-            children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(ErrorBoundary, {
+            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(ErrorBoundary, {
               children: element
             })
           }), root, () => {
@@ -19425,7 +19337,7 @@
       });
     }));
   }
-  var ErrorBoundary = class extends import_react6.Component {
+  var ErrorBoundary = class extends import_react4.Component {
     constructor(...args) {
       super(...args);
       this.state = {
@@ -19452,11 +19364,8 @@ ${errorInfo.componentStack}`);
     }
   };
 
-  // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/components/Banner/Banner.mjs
-  var Banner2 = createRemoteReactComponent(Banner);
-
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
-  var import_react9 = __toESM(require_react(), 1);
+  var import_react6 = __toESM(require_react(), 1);
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/errors.mjs
   var CheckoutUIExtensionError = class extends Error {
@@ -19471,10 +19380,16 @@ ${errorInfo.componentStack}`);
       this.name = "ScopeNotGrantedError";
     }
   };
+  var ExtensionHasNoMethodError = class extends Error {
+    constructor(method, target2) {
+      super(`Cannot call '${method}()' on target '${target2}'. The corresponding property was not found on the API.`);
+      this.name = "ExtensionHasNoMethodError";
+    }
+  };
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/api.mjs
   function useApi(_target) {
-    const api = (0, import_react9.useContext)(ExtensionApiContext);
+    const api = (0, import_react6.useContext)(ExtensionApiContext);
     if (api == null) {
       throw new CheckoutUIExtensionError("You can only call this hook when running as a UI extension.");
     }
@@ -19482,10 +19397,10 @@ ${errorInfo.componentStack}`);
   }
 
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/subscription.mjs
-  var import_react10 = __toESM(require_react(), 1);
+  var import_react7 = __toESM(require_react(), 1);
   function useSubscription(subscription) {
-    const [, setValue] = (0, import_react10.useState)(subscription.current);
-    (0, import_react10.useEffect)(() => {
+    const [, setValue] = (0, import_react7.useState)(subscription.current);
+    (0, import_react7.useEffect)(() => {
       let didUnsubscribe = false;
       const checkForUpdates = (newValue) => {
         if (didUnsubscribe) {
@@ -19503,6 +19418,24 @@ ${errorInfo.componentStack}`);
     return subscription.current;
   }
 
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/buyer-journey.mjs
+  var import_react8 = __toESM(require_react(), 1);
+  function useBuyerJourneyIntercept(interceptor) {
+    const api = useApi();
+    if (!("buyerJourney" in api)) {
+      throw new ExtensionHasNoMethodError("buyerJourney", api.extension.target);
+    }
+    const interceptorRef = (0, import_react8.useRef)(interceptor);
+    interceptorRef.current = interceptor;
+    return (0, import_react8.useEffect)(() => {
+      const teardownPromise = api.buyerJourney.intercept((interceptorProps) => interceptorRef.current(interceptorProps));
+      return () => {
+        teardownPromise.then((teardown) => teardown()).catch(() => {
+        });
+      };
+    }, [api.buyerJourney]);
+  }
+
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/shipping-address.mjs
   function useShippingAddress() {
     const shippingAddress = useApi().shippingAddress;
@@ -19512,6 +19445,15 @@ ${errorInfo.componentStack}`);
     return useSubscription(shippingAddress);
   }
 
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/buyer-identity.mjs
+  function usePhone() {
+    const buyerIdentity = useApi().buyerIdentity;
+    if (!buyerIdentity) {
+      throw new ScopeNotGrantedError("Using buyer identity requires having personal customer data permissions granted to your app.");
+    }
+    return useSubscription(buyerIdentity.phone);
+  }
+
   // node_modules/.pnpm/@shopify+ui-extensions-react@2023.10.0_@shopify+ui-extensions@2023.10.0_react-reconciler@0.29.0_react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
   function useSettings() {
     const settings = useSubscription(useApi().settings);
@@ -19519,21 +19461,59 @@ ${errorInfo.componentStack}`);
   }
 
   // extensions/phone-validator/src/Checkout.jsx
-  var import_jsx_runtime4 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime3 = __toESM(require_jsx_runtime());
   var Checkout_default = reactExtension(
     "purchase.checkout.delivery-address.render-before",
-    () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {})
+    () => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Extension, {})
   );
   function Extension() {
     const { starting_digits, max_length, country_code } = useSettings();
     const address = useShippingAddress();
+    const phone = usePhone();
+    console.log({ phone });
     if (address.countryCode !== (country_code == null ? void 0 : country_code.toUpperCase())) {
-      return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_jsx_runtime4.Fragment, {});
+      return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_jsx_runtime3.Fragment, {});
     }
     const startingDigits = starting_digits != null ? starting_digits : "44";
     const maxLength = max_length != null ? max_length : 11;
     console.log({ startingDigits, maxLength, country_code, code: address.countryCode });
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Banner2, { children: "Test" });
+    const SHOW_STARTING_ERROR_AND_BLOCK_PROGRESS = {
+      behavior: "block",
+      reason: `Phone number must start with ${startingDigits}`,
+      errors: [
+        {
+          message: `Phone number must start with ${startingDigits}`,
+          target
+        },
+        {
+          message: `Phone number must start with ${startingDigits}`
+        }
+      ]
+    };
+    const SHOW_LENGTH_ERROR_AND_BLOCK_PROGRESS = {
+      behavior: "block",
+      reason: `Phone number must be ${maxLength} long`,
+      errors: [
+        {
+          message: `Phone number must be ${maxLength} long`,
+          target
+        },
+        {
+          message: `Phone number must be ${maxLength} long`
+        }
+      ]
+    };
+    const ALLOW = { behavior: "allow" };
+    useBuyerJourneyIntercept(({ canBlockProgress }) => {
+      if (!phone.startsWith(startingDigits)) {
+        return SHOW_STARTING_ERROR_AND_BLOCK_PROGRESS;
+      }
+      if (phone.length !== maxLength) {
+        return SHOW_LENGTH_ERROR_AND_BLOCK_PROGRESS;
+      }
+      return ALLOW;
+    });
+    return null;
   }
 })();
 //# sourceMappingURL=phone-validator.js.map
