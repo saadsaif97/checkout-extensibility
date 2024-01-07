@@ -26,7 +26,7 @@ export function run(input) {
   if (cartValue > CONFIGURED_AMOUNT) {
     // Find the payment method to hide
     const hidePaymentMethod = input.paymentMethods.find((method) =>
-      method.name.includes("COD")
+      method.name.toUpperCase().includes("COD")
     );
 
     if (!hidePaymentMethod) {

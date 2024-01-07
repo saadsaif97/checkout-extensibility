@@ -28,7 +28,7 @@ export function run(input) {
   if (NO_COD_PRODUCT_IS_AVAILABLE) {
     // Find the payment method to hide
     const hidePaymentMethod = input.paymentMethods.find((method) =>
-      method.name.includes("COD")
+      method.name.toUpperCase().includes("COD")
     );
 
     if (!hidePaymentMethod) {
