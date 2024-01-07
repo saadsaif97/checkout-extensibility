@@ -1,0 +1,7 @@
+query RunInput {
+  paymentCustomization {
+    metafield(namespace: "$app:reorder-payment-methods", key: "function-configuration") {
+      value
+    }
+  }
+}
