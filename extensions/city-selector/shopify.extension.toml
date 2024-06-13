@@ -44,9 +44,16 @@ api_access = true
 # your extension. Learn more:
 # https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#settings-definition
 
-# [extensions.settings]
-# [[extensions.settings.fields]]
-# key = "banner_title"
-# type = "single_line_text_field"
-# name = "Banner title"
-# description = "Enter a title for the banner"
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "pakistan_cities"
+type = "multi_line_text_field"
+name = "Pakistan Cities"
+description = "Enter the comma separated values like Karachi,Lahore,Faisalabad,Rawalpindi,Gujranwala,Peshawar,Multan"
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "uk_cities"
+type = "multi_line_text_field"
+name = "UK Cities"
+description = "Enter the comma separated values like London,Birmingham,Glasgow"
