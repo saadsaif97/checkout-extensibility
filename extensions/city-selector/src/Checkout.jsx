@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from 'react';
 
 export default reactExtension(
-  'purchase.checkout.block.render',
+  'purchase.checkout.delivery-address.render-before',
   () => <Extension />,
 );
 
