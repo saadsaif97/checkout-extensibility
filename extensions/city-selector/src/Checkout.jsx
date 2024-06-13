@@ -2,70 +2,68 @@ import {
   reactExtension,
   Select,
   useApplyShippingAddressChange,
+  useSettings,
   useShippingAddress,
-} from '@shopify/ui-extensions-react/checkout';
-import { useEffect, useState } from 'react';
+} from "@shopify/ui-extensions-react/checkout";
+import { useEffect, useState } from "react";
 
 export default reactExtension(
-  'purchase.checkout.delivery-address.render-before',
-  () => <Extension />,
+  "purchase.checkout.delivery-address.render-before",
+  () => <Extension />
 );
 
 function Extension() {
   const address = useShippingAddress();
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState("");
   const updateShippingAddress = useApplyShippingAddressChange();
-  
+  const { pakistan_cities, uk_cities } = useSettings();
+  const PAKISTAN_CITIES =
+    pakistan_cities ||
+    "Karachi,Lahore,Kotla Qasim Khan,Faisalabad,Rawalpindi,Gujranwala,Peshawar,Multan,Hyderabad City,Islamabad,Quetta,Cantonment,Eminabad";
+  const UK_CITIES =
+    uk_cities ||
+    "London,Birmingham,Glasgow,Liverpool,Manchester,Sheffield,Leeds,Edinburgh,Bristol,Cardiff";
+
   const handleSelect = async (value) => {
     try {
-      console.log(value, address)
-      setCity(value)
+      console.log(value, address);
+      setCity(value);
       updateShippingAddress({
         address: {
-          city: value
+          city: value,
         },
-        type: "updateShippingAddress"
-      })
+        type: "updateShippingAddress",
+      });
     } catch (error) {
-      console.log({error})
+      console.log({ error });
     }
-  }
-  
-  const PAKISTAN_CITIES = "Karachi,Lahore,Kotla Qasim Khan,Faisalabad,Rawalpindi,Gujranwala,Peshawar,Multan,Hyderabad City,Islamabad,Quetta,Cantonment,Eminabad";
+  };
+
   if (address?.countryCode == "PK") {
     return (
       <Select
         label="Select city"
         value={city}
         onChange={(value) => handleSelect(value)}
-        options={
-          PAKISTAN_CITIES.split(',').map(city => ({
-            value: city,
-            label: city
-          }))
-        }
+        options={PAKISTAN_CITIES?.split(",")?.map((city) => ({
+          value: city,
+          label: city,
+        }))}
       />
     );
   }
-  
-  const UK_CITIES = "London,Birmingham,Glasgow,Liverpool,Manchester,Sheffield,Leeds,Edinburgh,Bristol,Cardiff";
+
   if (address?.countryCode == "GB") {
     return (
       <Select
         label="Select city"
         value={city}
         onChange={(value) => handleSelect(value)}
-        options={
-          UK_CITIES.split(',').map(city => ({
-            value: city,
-            label: city
-          }))
-        }
+        options={UK_CITIES?.split(",")?.map((city) => ({
+          value: city,
+          label: city,
+        }))}
       />
     );
   }
-  
-
-
-  
 }

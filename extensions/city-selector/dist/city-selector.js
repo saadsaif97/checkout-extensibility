@@ -19533,6 +19533,12 @@ ${errorInfo.componentStack}`);
     throw new ExtensionHasNoMethodError("applyCartLinesChange", api.extension.target);
   }
 
+  // node_modules/.pnpm/@shopify+ui-extensions-react@2024.4.2_@shopify+ui-extensions@2024.4.2_react-reconciler@0.29.0_react@18.2.0__react@18.2.0/node_modules/@shopify/ui-extensions-react/build/esm/surfaces/checkout/hooks/settings.mjs
+  function useSettings() {
+    const settings = useSubscription(useApi().settings);
+    return settings;
+  }
+
   // extensions/city-selector/src/Checkout.jsx
   var import_react11 = __toESM(require_react());
   var import_jsx_runtime4 = __toESM(require_jsx_runtime());
@@ -19541,9 +19547,13 @@ ${errorInfo.componentStack}`);
     () => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Extension, {})
   );
   function Extension() {
+    var _a, _b;
     const address = useShippingAddress();
     const [city, setCity] = (0, import_react11.useState)("");
     const updateShippingAddress = useApplyShippingAddressChange();
+    const { pakistan_cities, uk_cities } = useSettings();
+    const PAKISTAN_CITIES = pakistan_cities || "Karachi,Lahore,Kotla Qasim Khan,Faisalabad,Rawalpindi,Gujranwala,Peshawar,Multan,Hyderabad City,Islamabad,Quetta,Cantonment,Eminabad";
+    const UK_CITIES = uk_cities || "London,Birmingham,Glasgow,Liverpool,Manchester,Sheffield,Leeds,Edinburgh,Bristol,Cardiff";
     const handleSelect = (value) => __async(this, null, function* () {
       try {
         console.log(value, address);
@@ -19558,7 +19568,6 @@ ${errorInfo.componentStack}`);
         console.log({ error });
       }
     });
-    const PAKISTAN_CITIES = "Karachi,Lahore,Kotla Qasim Khan,Faisalabad,Rawalpindi,Gujranwala,Peshawar,Multan,Hyderabad City,Islamabad,Quetta,Cantonment,Eminabad";
     if ((address == null ? void 0 : address.countryCode) == "PK") {
       return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
         Select2,
@@ -19566,14 +19575,13 @@ ${errorInfo.componentStack}`);
           label: "Select city",
           value: city,
           onChange: (value) => handleSelect(value),
-          options: PAKISTAN_CITIES.split(",").map((city2) => ({
+          options: (_a = PAKISTAN_CITIES == null ? void 0 : PAKISTAN_CITIES.split(",")) == null ? void 0 : _a.map((city2) => ({
             value: city2,
             label: city2
           }))
         }
       );
     }
-    const UK_CITIES = "London,Birmingham,Glasgow,Liverpool,Manchester,Sheffield,Leeds,Edinburgh,Bristol,Cardiff";
     if ((address == null ? void 0 : address.countryCode) == "GB") {
       return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
         Select2,
@@ -19581,7 +19589,7 @@ ${errorInfo.componentStack}`);
           label: "Select city",
           value: city,
           onChange: (value) => handleSelect(value),
-          options: UK_CITIES.split(",").map((city2) => ({
+          options: (_b = UK_CITIES == null ? void 0 : UK_CITIES.split(",")) == null ? void 0 : _b.map((city2) => ({
             value: city2,
             label: city2
           }))
