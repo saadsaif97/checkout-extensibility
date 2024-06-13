@@ -50,8 +50,6 @@ key = "pakistan_cities"
 type = "multi_line_text_field"
 name = "Pakistan Cities"
 description = "Enter the comma separated values like Karachi,Lahore,Faisalabad,Rawalpindi,Gujranwala,Peshawar,Multan"
-
-[extensions.settings]
 [[extensions.settings.fields]]
 key = "uk_cities"
 type = "multi_line_text_field"
