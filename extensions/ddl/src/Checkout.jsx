@@ -28,10 +28,6 @@ function Extension() {
         key: "shippingArea",
         value: value
       })
-      await noteChange({
-        note: value,
-        type: 'updateNote'
-      })
     } catch (error) {
       console.log({error})
     }
