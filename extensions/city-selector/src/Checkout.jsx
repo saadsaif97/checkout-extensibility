@@ -83,6 +83,7 @@ function Extension() {
       <Select
         label="Select city"
         value={city}
+        error={city != address.city ? "Please select city from dropdown" : null}
         onChange={(value) => handleSelect(value)}
         options={UK_CITIES?.split(",")?.map((city) => ({
           value: city,
