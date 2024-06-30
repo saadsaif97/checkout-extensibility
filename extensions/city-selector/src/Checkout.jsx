@@ -2,6 +2,7 @@ import {
   reactExtension,
   Select,
   useApplyShippingAddressChange,
+  useBuyerJourneyIntercept,
   useSettings,
   useShippingAddress,
 } from "@shopify/ui-extensions-react/checkout";
@@ -38,12 +39,36 @@ function Extension() {
       console.log({ error });
     }
   };
+  
+  useBuyerJourneyIntercept(
+    ({canBlockProgress}) => {
+      return canBlockProgress &&
+        city != address.city
+        ? {
+            behavior: 'block',
+            reason: 'Please select city from dropdown',
+            errors: [
+              {
+                message:
+                  'Please select city from dropdown',
+                // Show an error underneath the city field
+                target:
+                  '$.cart.deliveryGroups[0].deliveryAddress.city',
+              }
+            ],
+          }
+        : {
+            behavior: 'allow',
+          };
+    },
+  );
 
   if (address?.countryCode == "PK") {
     return (
       <Select
         label="Select city"
         value={city}
+        error={city != address.city ? "Please select city from dropdown" : null}
         onChange={(value) => handleSelect(value)}
         options={PAKISTAN_CITIES?.split(",")?.map((city) => ({
           value: city,
