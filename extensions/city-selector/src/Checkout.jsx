@@ -54,6 +54,9 @@ function Extension() {
                 // Show an error underneath the city field
                 target:
                   '$.cart.deliveryGroups[0].deliveryAddress.city',
+              },
+              {
+                message: 'Please select city from dropdown',
               }
             ],
           }
