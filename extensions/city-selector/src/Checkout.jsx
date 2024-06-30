@@ -42,6 +42,7 @@ function Extension() {
   
   useBuyerJourneyIntercept(
     ({canBlockProgress}) => {
+      console.log("canBlockProgress && city != address.city: ", canBlockProgress && city != address.city)
       return canBlockProgress &&
         city != address.city
         ? {
